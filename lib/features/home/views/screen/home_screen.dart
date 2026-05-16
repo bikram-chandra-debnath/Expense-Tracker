@@ -14,6 +14,7 @@ class HomeScreen extends GetView<HomeController> {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       body: Obx(
+        // ignore: unrelated_type_equality_checks
         () => controller.currentPage == 0
             ? HomeSection()
             : ProfileSection(),
