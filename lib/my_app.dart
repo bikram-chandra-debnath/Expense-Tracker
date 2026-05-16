@@ -1,7 +1,7 @@
 
 
 import 'package:expense_tracker/core/Theme/theme.dart';
-import 'package:expense_tracker/features/home/views/screen/home_screen.dart';
+import 'package:expense_tracker/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,10 +15,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
      initialRoute: "/home",
-
-     getPages: [
-      GetPage(name: "/home", page: ()=> HomeScreen() )
-     ],
+     getPages: routingPages,
     );
   }
 }
