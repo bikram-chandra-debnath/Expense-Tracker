@@ -1,3 +1,4 @@
+import 'package:expense_tracker/core/constants/text.dart';
 import 'package:expense_tracker/features/home/views/widgets/finance.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -36,7 +37,7 @@ class BalanceCard extends GetView {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "Total Balance",
+            AppTexts.totlaBalance,
             style: TextStyle(
               fontSize: 16,
               color: Colors.white,
@@ -61,9 +62,9 @@ class BalanceCard extends GetView {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 // Income
-                Finances(title: 'Income', amount: '\$ 2200.00',),
+                Finances(title: AppTexts.income, amount: '\$ 2200.00',),
                 // expenses
-               Finances(title: "Expenses", amount: "\$ 900.00")
+               Finances(title:AppTexts.expenses, amount: "\$ 900.00")
               ],
             ),
           ),

@@ -1,4 +1,5 @@
 
+import 'package:expense_tracker/core/constants/text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,7 +14,7 @@ class TransactionsTitle extends GetView {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          "Transactions",
+          AppTexts.transaction,
           style: TextStyle(
             fontSize: 16,
             color: Theme.of(context).colorScheme.onSurface,
@@ -23,7 +24,7 @@ class TransactionsTitle extends GetView {
         GestureDetector(
           onTap: () {},
           child: Text(
-            "View All",
+            AppTexts.viewAll,
             style: TextStyle(
               fontSize: 14,
               color: Theme.of(context).colorScheme.outline,

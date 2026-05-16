@@ -1,4 +1,5 @@
 
+import 'package:expense_tracker/core/constants/text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -38,7 +39,7 @@ class MyAppBar extends GetView {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Welcome!",
+                  AppTexts.welcome,
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w600,

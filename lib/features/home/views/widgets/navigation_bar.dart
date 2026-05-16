@@ -1,3 +1,4 @@
+import 'package:expense_tracker/core/constants/text.dart';
 import 'package:expense_tracker/features/home/view_model/home_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -24,11 +25,11 @@ class AppNavigationBar extends GetView<HomeController> {
           items: const [
             BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.home),
-              label: "Home",
+              label: AppTexts.home,
             ),
             BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.profile_circled),
-              label: "Profile",
+              label: AppTexts.profile,
             ),
           ],
         ),
