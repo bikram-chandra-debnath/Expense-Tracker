@@ -1,6 +1,7 @@
-
 import 'package:expense_tracker/core/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class AppFormField extends StatelessWidget {
   const AppFormField({
@@ -11,7 +12,7 @@ class AppFormField extends StatelessWidget {
     this.prefixIcon,
     this.borderRadius = 12,
     this.suffixIcon,
-     this.isPassword = false,
+    this.isPassword = false,
   });
 
   final bool isDate, isPassword;
@@ -23,16 +24,24 @@ class AppFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dateController = DateController.instance;
     return TextFormField(
       controller: controller,
       readOnly: isDate,
       onTap: isDate
-          ? () => showDatePicker(
-              context: context,
-              initialDate: DateTime.now(),
-              firstDate: DateTime.now().subtract(Duration(days: 365)),
-              lastDate: DateTime.now().add(Duration(days: 365)),
-            )
+          ? () async {
+              DateTime? newDate = await showDatePicker(
+                context: context,
+                initialDate: dateController.selectedDate.value,
+                firstDate: DateTime.now().subtract(Duration(days: 365)),
+                lastDate: DateTime.now(),
+              );
+
+              if (newDate != null) {
+                controller?.text = DateFormat("dd/MM/yyyy").format(newDate);
+                dateController.setDate(newDate);
+              }
+            }
           : null,
       obscureText: isPassword,
       style: TextStyle(color: AppColors.black, fontWeight: FontWeight.w500),
@@ -49,5 +58,15 @@ class AppFormField extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class DateController extends GetxController {
+  static DateController get instance => Get.find<DateController>();
+
+  var selectedDate = DateTime.now().obs;
+
+  void setDate(DateTime date) {
+    selectedDate.value = date;
   }
 }
