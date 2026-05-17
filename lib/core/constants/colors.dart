@@ -11,4 +11,6 @@ class AppColors{
   static const Color secondary = Color(0xffE064f7);
   static const Color tertiary =Color(0xffff8d6c);
   static const Color outline = Colors.grey;
+  static const Color white = Colors.white;
+  static const Color black = Colors.black;
 }

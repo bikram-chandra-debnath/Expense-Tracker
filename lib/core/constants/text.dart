@@ -14,4 +14,8 @@ class AppTexts {
 
 // Add Expenses screen 
   static const String addExpenses = "Add Expenses";
+  static const String save =  "Save";
+  static const String category =  "Category";
+  static const String date = "Date";
+  static const String amount = "Amount";
 }
