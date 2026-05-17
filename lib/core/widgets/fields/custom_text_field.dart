@@ -10,24 +10,27 @@ class AppFormField extends StatelessWidget {
     this.controller,
     this.hintText,
     this.prefixIcon,
-    this.borderRadius = 12,
+    this.borderRadius,
     this.suffixIcon,
     this.isPassword = false,
+    this.readOnly = false,
+    this.onTap,
   });
 
-  final bool isDate, isPassword;
+  final bool isDate, isPassword, readOnly;
   final TextEditingController? controller;
   final String? hintText;
   final IconData? prefixIcon;
-  final double borderRadius;
+  final BorderRadius? borderRadius;
   final Widget? suffixIcon;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     final dateController = DateController.instance;
     return TextFormField(
       controller: controller,
-      readOnly: isDate,
+      readOnly: readOnly,
       onTap: isDate
           ? () async {
               DateTime? newDate = await showDatePicker(
@@ -42,7 +45,7 @@ class AppFormField extends StatelessWidget {
                 dateController.setDate(newDate);
               }
             }
-          : null,
+          : onTap,
       obscureText: isPassword,
       style: TextStyle(color: AppColors.black, fontWeight: FontWeight.w500),
       decoration: InputDecoration(
@@ -53,7 +56,8 @@ class AppFormField extends StatelessWidget {
         suffixIcon: suffixIcon,
         prefixIcon: Icon(prefixIcon, size: 16, color: Colors.grey),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(borderRadius),
+          borderRadius:
+              borderRadius ?? const BorderRadius.all(Radius.circular(12)),
           borderSide: BorderSide.none,
         ),
       ),
