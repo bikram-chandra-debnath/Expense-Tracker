@@ -1,7 +1,10 @@
+
 import 'package:expense_tracker/core/constants/text.dart';
 import 'package:expense_tracker/core/widgets/buttons/elevated_button.dart';
+import 'package:expense_tracker/core/widgets/fields/custom_expanded_field.dart';
 import 'package:expense_tracker/core/widgets/fields/custom_text_field.dart';
-import 'package:expense_tracker/features/add%20expenses/view_model/add_expenses_controller.dart';
+import 'package:expense_tracker/features/add_expenses/view_model/add_expenses_controller.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -41,19 +44,7 @@ class AddExpensesScreen extends GetView<AddExpensesController> {
               const SizedBox(height: 32),
 
               // Category Field
-              AppFormField(
-                readOnly: true,
-                controller: controller.categoryController,
-                prefixIcon: Icons.list,
-                hintText: AppTexts.category,
-                suffixIcon: IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.add,
-                    color: Theme.of(context).colorScheme.outline,
-                  ),
-                ),
-              ),
+              Category(),
               const SizedBox(height: 16),
 
               // Date Selection Field
@@ -77,6 +68,49 @@ class AddExpensesScreen extends GetView<AddExpensesController> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class Category extends GetView<AddExpensesController> {
+  const Category({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AppFormField(
+      readOnly: true,
+      controller: controller.categoryController,
+      prefixIcon: Icons.list,
+      hintText: AppTexts.category,
+      suffixIcon: IconButton(
+        onPressed: () => showDialog(
+          
+          context: context,
+          builder: (context) => AlertDialog(
+            scrollable: true,
+            backgroundColor: Colors.grey.shade100,
+            title: Text("Create Category"),
+            content: SizedBox(
+              width: double.maxFinite,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // Name
+                  AppFormField(hintText: "Name"),
+                  SizedBox(height: 16),
+                  // Select Icon
+                  AppExpandedField(hintText: 'Icon',readOnly: true,),
+
+                  SizedBox(height: 16),
+                  // Color
+                  AppExpandedField(hintText: "Color",readOnly: true,),
+                ],
+              ),
+            ),
+          ),
+        ),
+        icon: Icon(Icons.add, color: Theme.of(context).colorScheme.outline),
       ),
     );
   }

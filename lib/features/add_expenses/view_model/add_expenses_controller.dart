@@ -17,4 +17,10 @@ class AddExpensesController extends GetxController {
     dateController.text = DateFormat("dd/MM/yyyy").format(DateTime.now());
     super.onInit();
   }
+
+  RxBool iconExpand = false.obs;
+
+
+
+
 }
